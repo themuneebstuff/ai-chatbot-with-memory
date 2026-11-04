@@ -3,3 +3,5 @@ venv/
 __pycache__/
 .vscode/
 .vercel/
+node_modules/
+.netlify/
