@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat with Memory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>Chat with Memory</h1>
+      <button id="new-chat" class="btn-ghost">New chat</button>
+    </header>
+
+    <main id="chat" class="chat">
+      <p id="empty" class="empty">Say something. I will remember it during this session.</p>
+    </main>
+
+    <form id="form" class="composer">
+      <textarea id="input" rows="1" placeholder="Type a message..."></textarea>
+      <button id="send" type="submit" class="btn-primary">Send</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

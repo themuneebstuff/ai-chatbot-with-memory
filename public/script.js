@@ -7,10 +7,11 @@ const form = document.getElementById("form");
 const input = document.getElementById("input");
 const sendBtn = document.getElementById("send");
 const newChatBtn = document.getElementById("new-chat");
-const emptyMsg = document.getElementById("empty");
 
-// Add one message bubble to the screen
+const EMPTY_HTML = '<p id="empty" class="empty">Say something. I will remember it during this session.</p>';
+
 function addMessage(text, type) {
+  const emptyMsg = document.getElementById("empty");
   if (emptyMsg) emptyMsg.remove();
   const div = document.createElement("div");
   div.className = "msg " + type;
@@ -20,8 +21,9 @@ function addMessage(text, type) {
   return div;
 }
 
-// Three plain dots while waiting for the reply
 function showTyping() {
+  const emptyMsg = document.getElementById("empty");
+  if (emptyMsg) emptyMsg.remove();
   const div = document.createElement("div");
   div.className = "msg bot dots";
   div.innerHTML = "<span></span><span></span><span></span>";
@@ -31,7 +33,7 @@ function showTyping() {
 }
 
 async function sendMessage(text) {
-  // ===== MEMORY STEP 1: save the user's message (Python: history.append) =====
+  // MEMORY STEP 1: save the user's message (Python: history.append)
   history.push({ role: "user", content: text });
 
   addMessage(text, "user");
@@ -39,7 +41,7 @@ async function sendMessage(text) {
   sendBtn.disabled = true;
 
   try {
-    // ===== MEMORY STEP 2: send the WHOLE history (Python: contents=history) =====
+    // MEMORY STEP 2: send the WHOLE history (Python: contents=history)
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -49,7 +51,7 @@ async function sendMessage(text) {
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "Request failed");
 
-    // ===== MEMORY STEP 3: save the bot's reply too =====
+    // MEMORY STEP 3: save the bot's reply too
     history.push({ role: "assistant", content: data.reply });
 
     typing.remove();
@@ -65,7 +67,6 @@ async function sendMessage(text) {
   }
 }
 
-// Form submit (Send button or Enter)
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const text = input.value.trim();
@@ -83,7 +84,6 @@ input.addEventListener("keydown", (e) => {
   }
 });
 
-// Auto-grow the textarea
 input.addEventListener("input", () => {
   input.style.height = "auto";
   input.style.height = input.scrollHeight + "px";
@@ -92,5 +92,5 @@ input.addEventListener("input", () => {
 // New chat = clear memory (Python: history.clear())
 newChatBtn.addEventListener("click", () => {
   history = [];
-  chat.innerHTML = '<p id="empty" class="empty">Say something. I will remember it during this session.</p>';
+  chat.innerHTML = EMPTY_HTML;
 });
