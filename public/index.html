@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chat with Memory</title>
+  <title>AI Chatbot Project 1 | DecodeLabs Generative AI</title>
+  <meta name="description" content="A chatbot with in-session memory built with Python, JavaScript and the Gemini API. Project 1 of the DecodeLabs Generative AI internship by Muneeb Rana." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -12,7 +14,10 @@
 <body>
   <div class="app">
     <header class="topbar">
-      <h1>Chat with Memory</h1>
+      <div class="title">
+        <h1>AI Chatbot Project 1</h1>
+        <p class="subtitle">DecodeLabs Generative AI</p>
+      </div>
       <button id="new-chat" class="btn-ghost">New chat</button>
     </header>
 
@@ -24,6 +29,14 @@
       <textarea id="input" rows="1" placeholder="Type a message..."></textarea>
       <button id="send" type="submit" class="btn-primary">Send</button>
     </form>
+
+    <footer class="footer">
+      <span>Built by Muneeb Rana</span>
+      <span class="dot">·</span>
+      <a href="https://www.linkedin.com/in/iammuneebrana/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <span class="dot">·</span>
+      <a href="https://github.com/themuneebstuff" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </footer>
   </div>
 
   <script src="script.js"></script>
