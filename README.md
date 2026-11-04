@@ -1,3 +1,5 @@
+live demo: https://muneebaichatbot.netlify.app
+
 # AI Chatbot with Memory
 
 A terminal chatbot built with Python and the Google Gemini API.
